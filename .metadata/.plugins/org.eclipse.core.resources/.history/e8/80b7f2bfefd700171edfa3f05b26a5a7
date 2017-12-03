@@ -1,0 +1,109 @@
+package kr.ac.hansung.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+
+import kr.ac.hansung.model.Course;
+
+// 이것을 Bean으로 등록하겠다는 의미
+@Component("courseDAO")
+public class CourseDAO {
+
+	private JdbcTemplate jdbcTemplate;
+
+	@Autowired
+	public void setDataSource(DataSource dataSource) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+
+	// 레코드 갯수 조회
+	public int getRowCount() {
+		String sqlStatement = "select count(*) from offers";
+		return jdbcTemplate.queryForObject(sqlStatement, Integer.class);
+	}
+
+	// query and return a single object
+	public Course getOffer(String name) {
+		String sqlStatement = "select * from offers where name=?";
+		return jdbcTemplate.queryForObject(sqlStatement, new Object[]{name}, 
+				new RowMapper<Course>() {
+					public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
+						
+						Course course = new Course();
+						
+						course.setYear(rs.getInt("수강년도"));		
+						course.setSemester(rs.getInt("학기"));
+						course.setCourse_code(rs.getString("교과코드"));
+						course.setCourse_name(rs.getString("교과목명"));
+						course.setClassification(rs.getString("구분"));
+						course.setCredit(rs.getInt("학점"));
+
+					return course;
+					}
+			}
+		);
+	}
+	
+	// query courseturn multiple objects
+	public List<Course> getOffers() {
+		String sqlStatement = "select * from offers";
+		return jdbcTemplate.query(sqlStatement, 
+				new RowMapper<Course>() {
+					public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
+						
+						Course course = new Course();
+						
+						course.setYear(rs.getInt("수강년도"));		
+						course.setSemester(rs.getInt("학기"));
+						course.setCourse_code(rs.getString("교과코드"));
+						course.setCourse_name(rs.getString("교과목명"));
+						course.setClassification(rs.getString("구분"));
+						course.setCredit(rs.getInt("학점"));
+						
+						return course;
+					}
+			}
+		);
+	}
+	
+	public boolean insert(Course course) {
+		
+		String name = course.getName();
+		String email = course.getEmail();
+		String text = course.getText();
+		
+		String sqlStatement = "insert into offers (name, email, text) values (?, ?, ?)";
+		
+		// 몇개가 업데이트 되었는지 리턴해 준다.
+		return (jdbcTemplate.update(sqlStatement, new Object[] {name, email, text}) == 1);
+	}
+	
+	public boolean update(Offer offer) {
+		
+		int id = offer.getId();
+		String name = offer.getName();
+		String email = offer.getEmail();
+		String text = offer.getText();
+		
+		String sqlStatement = "update offers set name=?, email=?, text=? where id=?";
+		
+		// 몇개가 업데이트 되었는지 리턴해 준다.
+		return (jdbcTemplate.update(sqlStatement, new Object[] {name, email, text, id}) == 1);
+	}
+	
+	public boolean delete(int id) {
+		
+		String sqlStatement = "delete from offers where id=?";
+
+		return (jdbcTemplate.update(sqlStatement, new Object[] {id}) == 1);
+	}
+	
+}

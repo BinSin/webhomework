@@ -1,0 +1,19 @@
+package kr.ac.hansung.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.hansung.dao.CourseDAO;
+import kr.ac.hansung.model.Course;
+
+@Service
+public class CourseService {
+	
+	@Autowired
+	private CourseDAO courseDao;
+
+	public List<Integer> getGradeCourse(int year, int semester) {
+		return courseDao.getGradeCredit(year, semester);
+	}
+
+}
