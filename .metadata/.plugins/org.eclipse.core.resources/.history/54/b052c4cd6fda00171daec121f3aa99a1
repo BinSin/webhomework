@@ -1,0 +1,36 @@
+package kr.ac.hansung.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.hansung.dao.CourseDAO;
+import kr.ac.hansung.model.Course;
+
+@Service
+public class CourseService {
+
+	@Autowired
+	private CourseDAO courseDao;
+
+	public List<Course> getCourses() {
+		return courseDao.getCourses();
+	}
+	
+	public List<Course> getGrade() {
+		
+	}
+
+	public List<Integer> getCredits() {
+		List<Integer> credits = new ArrayList<Integer>(6);
+		credits.add(courseDao.getCredits(2013, 1));
+		credits.add(courseDao.getCredits(2013, 2));
+		credits.add(courseDao.getCredits(2014, 1));
+		credits.add(courseDao.getCredits(2014, 2));
+		credits.add( courseDao.getCredits(2017, 1));
+		
+		return credits;
+	}
+}

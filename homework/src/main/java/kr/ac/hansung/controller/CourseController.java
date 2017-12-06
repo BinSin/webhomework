@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.hansung.model.Course;
+import kr.ac.hansung.model.Credit;
 import kr.ac.hansung.service.CourseService;
 
 @Controller
@@ -18,13 +19,17 @@ public class CourseController {
 	
 	@RequestMapping("/gradecheck")
 	public String gradeCheck(Model model) {
-		List<Course> courses = courseService.getCourses();
-		List<Integer> credits = courseService.getCredits();
+		List<Credit> credits = courseService.getCredits();
 		
-		model.addAttribute("courses", courses)
-		.addAttribute("credits", credits);
+		model.addAttribute("credits", credits);
 		
 		return "gradecheck";
+	}
+	
+	@RequestMapping("/detail")
+	public String detail(@RequestParam() ,
+			Model model) {
+		
 	}
 	
 }

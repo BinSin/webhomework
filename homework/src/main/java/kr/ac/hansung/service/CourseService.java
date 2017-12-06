@@ -6,21 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.hansung.dao.CourseDAO;
-import kr.ac.hansung.model.Course;
+import kr.ac.hansung.model.Credit;
 
 @Service
 public class CourseService {
-	
+
 	@Autowired
 	private CourseDAO courseDao;
-	
-	
-	public List<Course> getCourses() {
-		return courseDao.getCourses();
-	}
-	
-	public List<Integer> getCredits() {
-		return courseDao.getCredits(new Course());
-	}
 
+	public List<Credit> getCredits() {
+		return courseDao.getCredits();
+	}
 }
