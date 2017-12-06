@@ -11,12 +11,21 @@
 	href="${pageContext.request.contextPath}/resources/css/main.css">
 </head>
 <body>
-
-	<c:forEach var="course" items="${courses}">
-		<p>
-			<c:out value="${course}"></c:out>
-		</p>
-	</c:forEach>
-
+	<table class="formtable">
+		<tr>
+			<td class="label">교과코드</td>
+			<td class="label">교과목명</td>
+			<td class="label">구분</td>
+			<td class="label">학점</td>
+		</tr>
+		<c:forEach var="course" items="${courses}">
+			<tr>
+				<td class="label">${course.course_code}</td>
+				<td class="label">${course.course_name}</td>
+				<td class="label">${course.classification}</td>
+				<td class="label">${course.credit}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

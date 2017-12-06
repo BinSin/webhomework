@@ -28,7 +28,7 @@ public class CourseDAO {
 
 	// query course return multiple objects
 	public List<Course> getCourses(int year, int semester) {
-		String sqlStatement = "select * from courses where year, semester";
+		String sqlStatement = "select * from courses where year=? and semester=?";
 		return jdbcTemplate.query(sqlStatement, new Object[] {year, semester}, new RowMapper<Course>() {
 			public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
 
@@ -66,7 +66,7 @@ public class CourseDAO {
 	 * 학기별 이수 학점 조회 이수 구분별 학점 조회 수강 신청하기 수강 신청 조회 이 4가지 메뉴 만들기
 	 */
 
-	
+	/*
 	public boolean insert(Offer offer) {
 		
 		String name = offer.getName();
@@ -97,5 +97,5 @@ public class CourseDAO {
 		String sqlStatement = "delete from offers where id=?";
 
 		return (jdbcTemplate.update(sqlStatement, new Object[] {id}) == 1);
-	}
+	}*/
 }
