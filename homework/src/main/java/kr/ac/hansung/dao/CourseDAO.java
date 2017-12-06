@@ -24,10 +24,22 @@ public class CourseDAO {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	public List<Integer> getCredits(Course course) {
+
+		String sqlStatement = "select sum(credit) from courses where year=? and semester=?";
+
+		return jdbcTemplate.query(sqlStatement, new RowMapper<Integer>() {
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+				return rs.getInt("sum(credit)");
+			}
+		});
+	}
+
 	// query course return multiple objects
-	public List<Course> getCourses(int year, int semester) {
+	public List<Course> getCourses() {
 		String sqlStatement = "select * from courses where year=? and semester=?";
-		return jdbcTemplate.query(sqlStatement, new Object[] {year, semester}, new RowMapper<Course>() {
+		return jdbcTemplate.query(sqlStatement, new RowMapper<Course>() {
 			public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 				Course course = new Course();
@@ -40,18 +52,6 @@ public class CourseDAO {
 				course.setCredit(rs.getInt("credit"));
 
 				return course;
-			}
-		});
-	}
-
-	// 학기별 학점 총합 조회
-	public int getCredits(int year, int semester) {
-
-		String sqlStatement = "select sum(credit) from courses where year=? and semester=?";
-		return jdbcTemplate.queryForObject(sqlStatement, new Object[] { year, semester }, new RowMapper<Integer>() {
-			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-
-				return rs.getInt("sum(credit)");
 			}
 		});
 	}

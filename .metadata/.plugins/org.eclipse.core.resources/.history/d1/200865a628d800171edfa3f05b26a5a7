@@ -1,0 +1,44 @@
+package kr.ac.hansung.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.ac.hansung.model.Course;
+import kr.ac.hansung.service.CourseService;
+
+@Controller
+public class CourseController {
+
+	@Autowired
+	private CourseService courseService;
+	
+	@RequestMapping("/gradecheck")
+	public String gradeCheck(Model model) {
+		Course course1 = courseService.getCourse(2013, 1);
+		int credit1 = courseService.getCredit(2013, 1);
+		Course course2 = courseService.getCourse(2013, 2);
+		int credit2 = courseService.getCredit(2013, 2);
+		Course course3 = courseService.getCourse(2014, 1);
+		int credit3 = courseService.getCredit(2014, 1);
+		Course course4 = courseService.getCourse(2014, 2);
+		int credit4 = courseService.getCredit(2014, 2);
+		Course course5 = courseService.getCourse(2017, 1);
+		int credit5 = courseService.getCredit(2017, 1);
+		
+		model.addAttribute("course", course1)
+		.addAttribute("course", course2)
+		.addAttribute("course", course3)
+		.addAttribute("course", course4)
+		.addAttribute("course", course5)
+		.addAttribute("credit", credit1)
+		.addAttribute("credit", credit2)
+		.addAttribute("credit", credit3)
+		.addAttribute("credit", credit4)
+		.addAttribute("credit", credit5);
+		
+		return "gradecheck";
+	}
+	
+}

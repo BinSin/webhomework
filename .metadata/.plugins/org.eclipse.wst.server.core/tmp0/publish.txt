@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Sun Dec 03 21:25:36 KST 2017
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\yongm\\.m2\\repository\\org\\springframework\\spring-web\\4.3.12.RELEASE\\spring-web-4.3.12.RELEASE.jar=WEB-INF/lib/spring-web-4.3.12.RELEASE.jar

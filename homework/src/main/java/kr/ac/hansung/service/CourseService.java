@@ -14,12 +14,13 @@ public class CourseService {
 	@Autowired
 	private CourseDAO courseDao;
 	
+	
 	public List<Course> getCourses() {
-		return courseDao.getCourses(2013, 1);
+		return courseDao.getCourses();
 	}
 	
-	public int getCredit() {
-		return courseDao.getCredits(2013, 1);
+	public List<Integer> getCredits() {
+		return courseDao.getCredits(new Course());
 	}
 
 }
