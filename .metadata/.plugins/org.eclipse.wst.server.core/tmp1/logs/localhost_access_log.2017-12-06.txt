@@ -133,3 +133,15 @@
 0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:20 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
 0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:21 +0900] "GET /SpringMVC/gradecheck HTTP/1.1" 200 1608
 0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:21 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:22 +0900] "GET /SpringMVC/detail?year=2014&semester=2 HTTP/1.1" 200 1066
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:22 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:22 +0900] "GET /SpringMVC/gradecheck HTTP/1.1" 200 1608
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:22 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:22 +0900] "GET /SpringMVC/detail?year=2017&semester=1 HTTP/1.1" 200 1625
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:22 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:23 +0900] "GET /SpringMVC/gradecheck HTTP/1.1" 200 1608
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:23 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:23 +0900] "GET /SpringMVC/detail?year=2017&semester=1 HTTP/1.1" 200 1625
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:23 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:23 +0900] "GET /SpringMVC/gradecheck HTTP/1.1" 200 1608
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:20:09:23 +0900] "GET /SpringMVC/resources/css/main.css HTTP/1.1" 200 821

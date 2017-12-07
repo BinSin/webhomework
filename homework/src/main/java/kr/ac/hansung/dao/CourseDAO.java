@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.hansung.model.Course;
 import kr.ac.hansung.model.Credit;
+import kr.ac.hansung.model.Credit2;
 
 // 이것을 Bean으로 등록하겠다는 의미
 @Repository
@@ -26,7 +27,7 @@ public class CourseDAO {
 	}
 
 
-	// query course return multiple objects
+	// 상세보기
 	public List<Course> getCourses(int year, int semester) {
 		String sqlStatement = "select * from courses where year=? and semester=?";
 		return jdbcTemplate.query(sqlStatement, new Object[] {year, semester}, new RowMapper<Course>() {
@@ -44,9 +45,9 @@ public class CourseDAO {
 		});
 	}
 	
-	// query course return multiple objects
+	// 학년/학기별 이수 총 학점 보기
 	public List<Credit> getCredits() {
-		String sqlStatement = "select distinct year, semester, sum(credit) from courses group by year, semester;";
+		String sqlStatement = "select year, semester, sum(credit) from courses group by year, semester;";
 		return jdbcTemplate.query(sqlStatement, new RowMapper<Credit>() {
 			public Credit mapRow(ResultSet rs, int rowNum) throws SQLException {
 
@@ -59,6 +60,29 @@ public class CourseDAO {
 				return credit;
 			}
 		});
+	}
+	
+	// 이수 구분별 학점내역 보기
+	public List<Credit2> getCredits2() {
+		String sqlStatement = "select classification, sum(credit) from courses group by classification";
+		return jdbcTemplate.query(sqlStatement, new RowMapper<Credit2>() {
+			public Credit2 mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				Credit2 credit2 = new Credit2();
+				
+				credit2.setClassification(rs.getString("classification"));
+				credit2.setCredit(rs.getInt("sum(credit)"));
+				
+				return credit2;
+			}
+		});
+	}
+	
+	// 총학점 계산
+	public int getTotalCredit() {
+		String sqlStatement = "select sum(Credit) from courses";
+		return jdbcTemplate.queryForObject(sqlStatement, Integer.class);
+		
 	}
 
 
