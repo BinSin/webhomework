@@ -64,7 +64,7 @@ public class CourseDAO {
 	
 	// 이수 구분별 학점내역 보기
 	public List<Credit2> getCredits2() {
-		String sqlStatement = "select classification, sum(credit) from courses group by classification";
+		String sqlStatement = "select classification, sum(credit) from courses where year<2018 group by classification ";
 		return jdbcTemplate.query(sqlStatement, new RowMapper<Credit2>() {
 			public Credit2 mapRow(ResultSet rs, int rowNum) throws SQLException {
 				
@@ -81,45 +81,21 @@ public class CourseDAO {
 	// 총학점 계산
 	public int getTotalCredit() {
 		String sqlStatement = "select sum(Credit) from courses";
+		
 		return jdbcTemplate.queryForObject(sqlStatement, Integer.class);
-		
 	}
 
-
-	/*
-	 * 학기별 이수 학점 조회 이수 구분별 학점 조회 수강 신청하기 수강 신청 조회 이 4가지 메뉴 만들기
-	 */
-
-	/*
-	public boolean insert(Offer offer) {
+	// 2018년 1학기 수강신청
+	public boolean insert(Course course) {
 		
-		String name = offer.getName();
-		String email = offer.getEmail();
-		String text = offer.getText();
+		String course_code = course.getCourse_code();
+		String course_name = course.getCourse_name();
+		String classification = course.getClassification();
+		int credit = course.getCredit();
 		
-		String sqlStatement = "insert into offers (name, email, text) values (?, ?, ?)";
+		String sqlStatement = "insert into courses values (2018, 1, ?, ?, ?, ?)";
 		
-		// 몇개가 업데이트 되었는지 리턴해 준다.
-		return (jdbcTemplate.update(sqlStatement, new Object[] {name, email, text}) == 1);
+		return (jdbcTemplate.update(sqlStatement, new Object[] {course_code, course_name, classification, credit}) == 1);
 	}
-	
-	public boolean update(Offer offer) {
-		
-		int id = offer.getId();
-		String name = offer.getName();
-		String email = offer.getEmail();
-		String text = offer.getText();
-		
-		String sqlStatement = "update offers set name=?, email=?, text=? where id=?";
-		
-		// 몇개가 업데이트 되었는지 리턴해 준다.
-		return (jdbcTemplate.update(sqlStatement, new Object[] {name, email, text, id}) == 1);
-	}
-	
-	public boolean delete(int id) {
-		
-		String sqlStatement = "delete from offers where id=?";
 
-		return (jdbcTemplate.update(sqlStatement, new Object[] {id}) == 1);
-	}*/
 }

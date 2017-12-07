@@ -31,4 +31,8 @@ public class CourseService {
 	public int getTotalCredit() {
 		return courseDao.getTotalCredit();
 	}
+	
+	public void insert(Course course) {
+		courseDao.insert(course);
+	}
 }

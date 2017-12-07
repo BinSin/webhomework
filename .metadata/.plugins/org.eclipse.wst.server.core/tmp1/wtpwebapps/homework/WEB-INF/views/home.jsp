@@ -18,11 +18,11 @@
 			이수 총 학점 조회 </a>
 	</p>
 	<p>
-		<a href="${pageContext.request.contextPath}/courserequest"> 수강
+		<a href="${pageContext.request.contextPath}/requestcourse"> 수강
 			신청하기 </a>
 	</p>
 	<p>
-		<a href="${pageContext.request.contextPath}/coursecheck"> 수강 신청 조회
+		<a href="${pageContext.request.contextPath}/checknewcourse?year=2018&semester=1"> 수강 신청 조회
 		</a>
 	</p>
 

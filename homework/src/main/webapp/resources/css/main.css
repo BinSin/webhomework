@@ -35,14 +35,14 @@ textarea {
 
 /* input type이 text인 것에 적용 */
 input[type=text] {
-	width: 300px;
+	width: 100px;
 	border-width: 1px;
 	padding: 2px
 }
 
 input[type=submit] {
 	display: block;
-	width: 50%;
+	width: 30%;
 	margin: 0 auto;
 }
 

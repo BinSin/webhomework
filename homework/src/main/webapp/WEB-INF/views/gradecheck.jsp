@@ -19,15 +19,19 @@
 			<td class="label">이수 학점</td>
 			<td class="label">상세보기</td>
 		</tr>
+
 		<c:forEach var="credit" items="${credits}">
-			<tr>
-				<td class="label">${credit.year}</td>
-				<td class="label">${credit.semester}</td>
-				<td class="label">${credit.sumCredit}</td>
-				<td class="label"><a
-					href="${pageContext.request.contextPath}/detail?year=${credit.year}&semester=${credit.semester}">링크</a></td>
-			</tr>
+			<c:if test="${credit.year ne 2018}">
+				<tr>
+					<td class="label">${credit.year}</td>
+					<td class="label">${credit.semester}</td>
+					<td class="label">${credit.sumCredit}</td>
+					<td class="label"><a
+						href="${pageContext.request.contextPath}/detail?year=${credit.year}&semester=${credit.semester}">링크</a></td>
+				</tr>
+			</c:if>
 		</c:forEach>
+
 	</table>
 </body>
 </html>

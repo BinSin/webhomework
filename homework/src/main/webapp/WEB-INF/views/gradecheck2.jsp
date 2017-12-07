@@ -14,16 +14,16 @@
 
 	<table class="formtable">
 		<tr>
-		<c:forEach var="credit" items="${credit}">
-			<td class="label">${credit.classification}</td>
-		</c:forEach>
-		<td class="label">총학점</td>
+			<c:forEach var="credit" items="${credit}">
+				<td class="label">${credit.classification}</td>
+			</c:forEach>
+			<td class="label">총학점</td>
 		</tr>
 		<tr>
-		<c:forEach var="credit" items="${credit}">
-			<td class="label">${credit.credit}</td>
-		</c:forEach>
-		<td class="label">${totalCredit}</td>
+			<c:forEach var="credit" items="${credit}">
+				<td class="label">${credit.credit}</td>
+			</c:forEach>
+			<td class="label">${totalCredit}</td>
 		</tr>
 
 	</table>

@@ -24,13 +24,15 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/detail"
 			access="isAuthenticated()" />
-		<security:intercept-url pattern="/coursecheck"
+		<security:intercept-url pattern="/checknewcourse"
 			access="isAuthenticated()" />
-		<security:intercept-url pattern="/courserequest"
+		<security:intercept-url pattern="requestcourse"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/gradecheck"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/gradecheck2"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="courserequested"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/**" access="permitAll" />
 
