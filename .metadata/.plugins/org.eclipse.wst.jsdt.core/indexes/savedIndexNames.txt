@@ -1,9 +1,0 @@
-INDEX VERSION 1.4+C:\dev\webhomework\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2603447019.index
-1840256737.index
-513138013.index
-3037098670.index
-770923330.index
-418138703.index
-770923330.index
-3081824253.index

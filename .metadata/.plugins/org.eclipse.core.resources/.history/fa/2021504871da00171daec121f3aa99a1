@@ -1,8 +1,0 @@
-package kr.ac.hansung.model;
-
-public class Credit {
-
-	private int year;
-	private int semester;
-	private int totalCredit;
-}
